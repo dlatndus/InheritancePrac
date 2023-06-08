@@ -14,16 +14,36 @@ namespace InheritancePrac
             List<Animal> animals = new List<Animal>() { new Dog(), new Dog(), new Dog(),
                                                         new Cat(), new Cat(), new Cat() };
 
-            foreach (var item in animals) 
+            foreach (var item in animals)
             {
                 item.Eat();
                 item.Sleep();
 
 
-                ((Dog)item).Bark();
-                ((Cat)item).Meow();
-            }
 
+
+                Dog dog = item as Dog;
+                if (dog != null)
+                {
+                    dog.Bark();
+                }
+                Cat cat = item as Cat;
+                if (cat != null)
+                {
+                    cat.Meow();
+                }
+
+
+                if (item is Dog)
+                {
+                    ((Dog)item).Bark();
+                }
+                else if (item is Cat)
+                {
+                    ((Cat)item).Meow();
+                }
+            }
+        }
         }
     }
 }
